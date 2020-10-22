@@ -5,6 +5,10 @@
     
     <mapper namespace="com.it.gb4.board.qna.QnaDAO">
     
+    	<update id="setUpdate" parameterType="QnaDTO">
+			update qna set title=#{title}, contents=#{contents} where num = #{num}
+		</update>
+    
     	<select id="getList" resultType="QnaDTO" parameterType="Pager">
     		select * from
 			(select rownum R, N.* from
