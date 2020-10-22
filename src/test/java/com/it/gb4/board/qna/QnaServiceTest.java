@@ -19,6 +19,7 @@ public class QnaServiceTest extends MyTestCase{
 	@Test
 	public void qnaListTest()throws Exception{
 		Pager pager = new Pager();
+		
 		List<BoardDTO> ar = qnaService.getList(pager);
 		System.out.println(ar.size());
 		
