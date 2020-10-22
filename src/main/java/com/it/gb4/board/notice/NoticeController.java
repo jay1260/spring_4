@@ -27,12 +27,13 @@ public class NoticeController {
 		if(boardDTO != null) {
 			mv.addObject("dto", boardDTO);
 			mv.setViewName("board/boardSelect");
+			mv.addObject("board", "notice");
 		}else {
 			mv.setViewName("common/result");
 			mv.addObject("msg", "No Data");
 			mv.addObject("path", "./noticeList");
 		}		
-		mv.addObject("board", "notice");
+		
 		return mv;
 	}
 	

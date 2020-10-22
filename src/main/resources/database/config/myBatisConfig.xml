@@ -7,6 +7,7 @@
   	<typeAliases>
   		<typeAlias type="java.lang.Long" alias="Long"/>
   		
+  		<typeAlias type="com.it.gb4.board.BoardDTO" alias="BoardDTO"/>
   		<typeAlias type="com.it.gb4.board.notice.NoticeDTO" alias="NoticeDTO"/>
   		<typeAlias type="com.it.gb4.board.qna.QnaDTO" alias="QnaDTO"/>
   		<typeAlias type="com.it.gb4.util.Pager" alias="Pager"/>

@@ -12,14 +12,17 @@
 <c:import url="../template/header.jsp"></c:import>
 
 <div class="container">
-	  <h3>${board} Select Page</h3>
-	  <h3 id="num">${dto.num}</h3>
-	  <h3>Title : ${dto.title}</h3>
-	  <h3>Writer : ${dto.writer} </h3>
-	  <h3>Contents : ${dto.contents}</h3>
-	  <input type="button" title="${dto.num}" value="Delete" class="btn btn-info" id="delete"> 
-	  <input type="button" title="${dto.num}" value="Update" class="btn btn-danger" id="update">
-	</div>
+	<h3>${board} Select Page</h3>
+	<h3 id="num">${dto.num}</h3>
+	<h3>Title : ${dto.title}</h3>
+	<h3>Writer : ${dto.writer} </h3>
+	<h3>Contents : ${dto.contents}</h3>
+	<input type="button" title="${dto.num}" value="Delete" class="btn btn-info" id="delete"> 
+	<input type="button" title="${dto.num}" value="Update" class="btn btn-danger" id="update">
+	<c:if test="${board ne 'notice'}">
+		<a href="./${board}Reply?num=${dto.num}" class="btn btn-primary">Replay</a>	
+	</c:if>
+</div>
 
 <script type="text/javascript">
 	//$("css선택자").action();
