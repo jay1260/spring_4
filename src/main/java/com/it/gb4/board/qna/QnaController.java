@@ -18,6 +18,18 @@ public class QnaController {
 	@Autowired
 	private QnaService qnaService;
 	
+	@GetMapping("qnaSelect")
+	public ModelAndView getOne(BoardDTO boardDTO)throws Exception{
+		boardDTO = qnaService.getOne(boardDTO);
+		
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("dto", boardDTO);
+		mv.addObject("board", "qna");
+		mv.setViewName("board/boardSelect");
+		
+		return mv;
+	}
+	
 	@PostMapping("qnaWrite")
 	public ModelAndView setInsert(BoardDTO boardDTO)throws Exception{
 		ModelAndView mv = new ModelAndView();

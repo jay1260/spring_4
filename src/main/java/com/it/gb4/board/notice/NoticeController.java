@@ -18,6 +18,19 @@ public class NoticeController {
 	@Autowired
 	private NoticeService noticeService;
 	
+	@GetMapping("noticeSelect")
+	public ModelAndView getOne(BoardDTO boardDTO)throws Exception{
+		boardDTO = noticeService.getOne(boardDTO);
+		
+		ModelAndView mv = new ModelAndView();
+		
+		mv.addObject("dto", boardDTO);
+		mv.addObject("board", "notice");
+		mv.setViewName("board/boardSelect");
+		
+		return mv;
+	}
+	
 	@PostMapping("noticeWrite")
 	public ModelAndView setInsert(BoardDTO boardDTO)throws Exception{
 		ModelAndView mv = new ModelAndView();
