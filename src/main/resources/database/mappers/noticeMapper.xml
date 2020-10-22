@@ -5,22 +5,22 @@
 
 <mapper namespace="com.it.gb4.board.notice.NoticeDAO">
 	<!-- 데이터 수정 -->
-	<update id="noticeUpdate" parameterType="NoticeDTO">
+	<update id="setUpdate" parameterType="NoticeDTO">
 		update board set title=#{title}, contents=#{contents} where num = #{num}
 	</update>
 
 	<!-- 데이터 삭제 -->
-	<delete id="noticeDelete" parameterType="NoticeDTO">
+	<delete id="setDelete" parameterType="NoticeDTO">
 		delete board where num = #{num}
 	</delete>
 	
 	<!-- 데이터 추가 -->
-	<insert id="noticeWrite" parameterType="NoticeDTO">
+	<insert id="setInsert" parameterType="NoticeDTO">
 		insert into board values(notice.nextval,#{title},#{writer},#{contents},sysdate,0)
 	</insert>
 	
 	<!-- 전체 데이터 보기 -->
-	<select id="noticeList" resultType="NoticeDTO" parameterType="Pager">
+	<select id="getList" resultType="NoticeDTO" parameterType="Pager">
 		select * from
 		(select rownum R, N.* from
 		(select * from board where
@@ -39,7 +39,7 @@
 		where R between #{startRow} and #{lastRow}
 	</select>
 	
-	<select id="noticeCount" resultType="Long" parameterType="Pager">
+	<select id="getCount" resultType="Long" parameterType="Pager">
 		select count(num) from board where
 		<choose>
 			<when test="kind=='tt'">
@@ -56,7 +56,7 @@
 	</select>
 	
 	<!-- 하나의 데이터 보기 -->
-	<select id="noticeSelect" parameterType="NoticeDTO" resultType="NoticeDTO">
+	<select id="getOne" parameterType="NoticeDTO" resultType="NoticeDTO">
 		select * from board where num = #{num}
 		<!-- DAO에서 선언한 변수명과 일치시켜 입력해준다. -->
 	</select>

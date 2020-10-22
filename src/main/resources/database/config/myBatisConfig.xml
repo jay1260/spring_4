@@ -9,6 +9,7 @@
   		
   		<typeAlias type="com.it.gb4.board.notice.NoticeDTO" alias="NoticeDTO"/>
   		<typeAlias type="com.it.gb4.board.qna.QnaDTO" alias="QnaDTO"/>
+  		<typeAlias type="com.it.gb4.util.Pager" alias="Pager"/>
   	
   	</typeAliases>
   </configuration>
