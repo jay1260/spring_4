@@ -24,10 +24,15 @@ public class NoticeController {
 		
 		ModelAndView mv = new ModelAndView();
 		
-		mv.addObject("dto", boardDTO);
+		if(boardDTO != null) {
+			mv.addObject("dto", boardDTO);
+			mv.setViewName("board/boardSelect");
+		}else {
+			mv.setViewName("common/result");
+			mv.addObject("msg", "No Data");
+			mv.addObject("path", "./noticeList");
+		}		
 		mv.addObject("board", "notice");
-		mv.setViewName("board/boardSelect");
-		
 		return mv;
 	}
 	

@@ -20,13 +20,19 @@ public class QnaController {
 	
 	@GetMapping("qnaSelect")
 	public ModelAndView getOne(BoardDTO boardDTO)throws Exception{
+		ModelAndView mv = new ModelAndView();
 		boardDTO = qnaService.getOne(boardDTO);
 		
-		ModelAndView mv = new ModelAndView();
-		mv.addObject("dto", boardDTO);
-		mv.addObject("board", "qna");
-		mv.setViewName("board/boardSelect");
+		if(boardDTO != null) {
+			mv.addObject("dto", boardDTO);
+			mv.setViewName("board/boardSelect");
+		}else {
+			mv.setViewName("common/result");
+			mv.addObject("msg", "No Data");
+			mv.addObject("path", "./qnaList");
+		}
 		
+		mv.addObject("board", "qna");
 		return mv;
 	}
 	
