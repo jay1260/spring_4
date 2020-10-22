@@ -5,8 +5,12 @@
     
     <mapper namespace="com.it.gb4.board.qna.QnaDAO">
     
-    	<update id="setUpdate" parameterType="QnaDTO">
-			update qna set title=#{title}, contents=#{contents} where num = #{num}
+    	<delete id="setDelete" parameterType="Long">
+    		delete qna where num=#{num}
+    	</delete>
+    
+    	<update id="noticeUpdate" parameterType="QnaDTO">
+			update board set title=#{title}, contents=#{contents} where num = #{num}
 		</update>
     
     	<select id="getList" resultType="QnaDTO" parameterType="Pager">
@@ -48,7 +52,7 @@
     		step> (select step from qna where num=#{num})
     	</update>
     	
-    	<select id="getOne" parameterType="QnaDTO" resultType="QnaDTO">
+    	<select id="getOne" parameterType="Long" resultType="QnaDTO">
     		select * from qna where num = #{num}
     	</select>
     	

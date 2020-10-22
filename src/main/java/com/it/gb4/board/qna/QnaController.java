@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,10 +20,20 @@ public class QnaController {
 	private QnaService qnaService;
 	
 	@GetMapping("qnaDelete")
-	public ModelAndView setDelete()throws Exception{
+	public ModelAndView setDelete(BoardDTO boardDTO)throws Exception{
 		ModelAndView mv = new ModelAndView();
+		int result = qnaService.setDelete(boardDTO);
+		mv.setViewName("board/boardList");
 		
-		mv.setViewName("board/boardDelete");
+		String message = "Delete Fail";
+		if(result>0) {
+			message = "Delete Success";
+		}
+		
+		mv.addObject("msg", message);
+		mv.addObject("path", "./qnaList");
+		mv.addObject("board", "qna");
+		mv.setViewName("common/result");
 		
 		return mv;
 	}
@@ -46,13 +57,17 @@ public class QnaController {
 	}
 	
 	@GetMapping("qnaUpdate")
-	public ModelAndView setUpdate() throws Exception{
+	public ModelAndView setUpdate() throws Exception {
+		// 글번호 출력
+		// 글제목, 글내용
+		BoardDTO boardDTO = new BoardDTO();
 		ModelAndView mv = new ModelAndView();
-		
+		mv.addObject("dto", boardDTO);
 		mv.setViewName("board/boardUpdate");
-		mv.addObject("board", "qna");
+		
 		
 		return mv;
+
 	}
 	
 	@PostMapping("qnaReply")
