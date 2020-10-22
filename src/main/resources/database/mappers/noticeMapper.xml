@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.it.gb4.board.notice.NoticeDAO">
+	<!-- 데이터 수정 -->
+	<update id="noticeUpdate" parameterType="NoticeDTO">
+		update board set title=#{title}, contents=#{contents} where num = #{num}
+	</update>
+
+	<!-- 데이터 삭제 -->
+	<delete id="noticeDelete" parameterType="NoticeDTO">
+		delete board where num = #{num}
+	</delete>
+	
+	<!-- 데이터 추가 -->
+	<insert id="noticeWrite" parameterType="NoticeDTO">
+		insert into board values(notice.nextval,#{title},#{writer},#{contents},sysdate,0)
+	</insert>
+	
+	<!-- 전체 데이터 보기 -->
+	<select id="noticeList" resultType="NoticeDTO" parameterType="Pager">
+		select * from
+		(select rownum R, N.* from
+		(select * from board where
+		<choose>
+			<when test="kind == 'tt'">
+				title
+			</when>
+			<when test="kind == 'wr'">
+				writer
+			</when>
+			<otherwise>
+				contents
+			</otherwise>
+		</choose> 
+		like '%'||#{search}||'%' order by num desc) N)
+		where R between #{startRow} and #{lastRow}
+	</select>
+	
+	<select id="noticeCount" resultType="Long" parameterType="Pager">
+		select count(num) from board where
+		<choose>
+			<when test="kind=='tt'">
+				title
+			</when>
+			<when test="kind=='wr'">
+				writer
+			</when>
+			<otherwise>
+				contents
+			</otherwise>
+		</choose>
+		like '%'||#{search}||'%'
+	</select>
+	
+	<!-- 하나의 데이터 보기 -->
+	<select id="noticeSelect" parameterType="NoticeDTO" resultType="NoticeDTO">
+		select * from board where num = #{num}
+		<!-- DAO에서 선언한 변수명과 일치시켜 입력해준다. -->
+	</select>
+</mapper>
