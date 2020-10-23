@@ -64,12 +64,11 @@ public class QnaController {
 		ModelAndView mv = new ModelAndView();
 		
 		mv.setViewName("board/boardUpdate");
-		mv.addObject("dto", boardDTO);
 		
+		mv.addObject("dto", boardDTO);
 		mv.addObject("board", "qna");
 		
 		return mv;
-
 	}
 	
 	@PostMapping("qnaReply")

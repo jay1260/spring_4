@@ -13,9 +13,16 @@
 		<p>The .navbar-right class is used to right-align navigation bar buttons.</p>
 		
 		<div>
-		
-		</div>
+			<c:if test="${not empty member}">
+				<h1>Login Success</h1>
+			</c:if>
+			
+			<c:if test="${empty member}">
+				<h1>Login Fail</h1>
+			</c:if>
+			
 			<img alt="main Image" src="./resources/images/index/main_1.jpg">
+		</div>
 	</div>
 </body>
 </html>
