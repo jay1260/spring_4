@@ -25,6 +25,7 @@
 	      <label for="pw2">Password:</label>
 	      <input type="password" class="form-control" id="pw2" placeholder="Enter Password" name="pw2">
 	    </div>
+	    <div id="pwCheck"></div>
 	    <div class="form-group">
 	      <label for="name">Name:</label>
 	      <input type="text" class="form-control" id="name" placeholder="Enter Name" name="name">
@@ -37,6 +38,22 @@
 	    <button type="submit" class="btn btn-default">Submit</button>
   </form>
 </div>
+<script type="text/javascript">
+	var pw1 = document.getElementById("pw");
+	var pw2 = document.getElementById("pw2");
+	var pwCheck = document.getElementById("pwCheck");
+	
+	pw2.addEventListener('blur', function() {
+		if(pw1.value != pw2.value){
+			var str = "PW가 일치하지 않습니다.";
+			pwCheck.innerHTML = str;
+		}else{
+			var str = "멋진 비밀번호";
+			pwCheck.innerHTML = str;
+		}
+	});
+	
+</script>
 
 
 </body>
