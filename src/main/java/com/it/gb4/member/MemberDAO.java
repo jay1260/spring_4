@@ -8,5 +8,9 @@ public interface MemberDAO {
 	// update
 	public int setMemberUpdate(MemberDTO memberDTO) throws Exception;
 
+	// delete
 	public int setMemberDelete(MemberDTO memberDTO) throws Exception;
+
+	// insert
+	public int setMemberJoin(MemberDTO memberDTO) throws Exception;
 }
