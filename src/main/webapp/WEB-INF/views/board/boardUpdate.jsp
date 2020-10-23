@@ -30,11 +30,11 @@
 	      <label for="contents">Contents:</label>
 	      <textarea class="form-control" rows="10" id="contents" name="contents">${dto.contents}</textarea>
 	    </div>
-	    <input type ="button" class="btn btn-primary" value="Update" id="btn">
+	   
 	    <button type="submit" class="btn btn-default">Update</button>
 	  </form>
 	</div>
-	<script type="text/javascript" src="../resources/js/noticeWrite.js"></script>
+	
 
 </body>
 </html>

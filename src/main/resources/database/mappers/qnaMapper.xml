@@ -9,7 +9,7 @@
     		delete qna where num=#{num}
     	</delete>
     
-    	<update id="noticeUpdate" parameterType="QnaDTO">
+    	<update id="setUpdate" parameterType="QnaDTO">
 			update board set title=#{title}, contents=#{contents} where num = #{num}
 		</update>
     
