@@ -18,6 +18,18 @@ public class NoticeController {
 	@Autowired
 	private NoticeService noticeService;
 	
+	@GetMapping("noticeUpdate")
+	public ModelAndView setUpdate() throws Exception {
+		// 글번호 출력
+		// 글제목, 글내용
+		ModelAndView mv = new ModelAndView();
+		
+		mv.addObject("board", "notice");
+		
+		mv.setViewName("board/boardUpdate");
+		return mv;
+	}
+	
 	@GetMapping("noticeDelete")
 	public ModelAndView setDelete(BoardDTO boardDTO)throws Exception{
 		ModelAndView mv = new ModelAndView();

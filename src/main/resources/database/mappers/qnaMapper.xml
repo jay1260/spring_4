@@ -10,7 +10,7 @@
     	</delete>
     
     	<update id="setUpdate" parameterType="QnaDTO">
-			update board set title=#{title}, contents=#{contents} where num = #{num}
+			update qna set title=#{title}, contents=#{contents} where num = #{num}
 		</update>
     
     	<select id="getList" resultType="QnaDTO" parameterType="Pager">
