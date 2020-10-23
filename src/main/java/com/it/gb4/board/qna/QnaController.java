@@ -60,10 +60,8 @@ public class QnaController {
 	public ModelAndView setUpdate() throws Exception {
 		// 글번호 출력
 		// 글제목, 글내용
-		BoardDTO boardDTO = new BoardDTO();
 		ModelAndView mv = new ModelAndView();
 		
-		mv.addObject("dto", boardDTO);
 		mv.setViewName("board/boardUpdate");
 		
 		mv.addObject("board", "qna");
