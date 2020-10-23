@@ -5,7 +5,7 @@
     
     <mapper namespace="com.it.gb4.board.qna.QnaDAO">
     
-    	<delete id="setDelete" parameterType="Long">
+    	<delete id="setDelete" parameterType="QnaDTO">
     		delete qna where num=#{num}
     	</delete>
     
