@@ -28,6 +28,7 @@
 	</table>
 	
 	<a href="./memberUpdate" class="btn btn-primary">Update</a>
+	<a href="./memberDelete" class="btn btn-danger">Delete</a>
 	
 </div>
 

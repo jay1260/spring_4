@@ -11,4 +11,8 @@
 	<update id="setMemberUpdate" parameterType="MemberDTO">
 		update member_lgb set name=#{name}, email=#{email} where id=#{id}
 	</update>
+	
+	<delete id="setMemberDelete" parameterType="MemberDTO">
+		delete member_lgb where id=#{id}
+	</delete>
 </mapper>

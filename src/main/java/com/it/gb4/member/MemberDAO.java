@@ -7,4 +7,6 @@ public interface MemberDAO {
 
 	// update
 	public int setMemberUpdate(MemberDTO memberDTO) throws Exception;
+
+	public int setMemberDelete(MemberDTO memberDTO) throws Exception;
 }

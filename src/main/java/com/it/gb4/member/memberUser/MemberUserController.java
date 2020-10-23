@@ -4,14 +4,12 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.it.gb4.member.MemberDTO;
-import com.it.gb4.member.MemberService;
 
 @Controller
 @RequestMapping("/member/**")
@@ -19,6 +17,22 @@ public class MemberUserController {
 	
 	@Autowired
 	public MemberUserService memberUserService;
+	
+	// 5.
+	@GetMapping("memberDelete")
+	public ModelAndView setMemberDelete(HttpSession session)throws Exception{
+		ModelAndView mv = new ModelAndView();
+		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+		
+		int result = memberUserService.setMemberDelete(memberDTO);
+		if(result>0) {
+			session.invalidate();
+		}
+		
+		mv.setViewName("redirect:../");
+		
+		return mv;
+	}
 	
 	// 4.
 	@PostMapping("memberUpdate")

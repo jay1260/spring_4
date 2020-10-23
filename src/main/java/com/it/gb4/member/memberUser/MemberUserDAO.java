@@ -15,6 +15,12 @@ public class MemberUserDAO implements MemberDAO {
 	private final String NAMESPACE="com.it.gb4.member.memberUser.MemberUserDAO.";
 	
 	@Override
+	public int setMemberDelete(MemberDTO memberDTO) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.delete(NAMESPACE+"setMemberDelete", memberDTO);
+	}
+	
+	@Override
 	public int setMemberUpdate(MemberDTO memberDTO) throws Exception {
 		// TODO Auto-generated method stub
 		return sqlSession.update(NAMESPACE+"setMemberUpdate", memberDTO);
