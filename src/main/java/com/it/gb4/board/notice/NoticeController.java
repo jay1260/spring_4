@@ -18,12 +18,32 @@ public class NoticeController {
 	@Autowired
 	private NoticeService noticeService;
 	
+	@PostMapping("noticeUpdate")
+	public ModelAndView setUpdate(BoardDTO boardDTO) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		int result = noticeService.setUpdate(boardDTO);
+		
+		String message = "Update Fail";
+		if(result>0) {
+			message = "Update Success";
+		}
+		
+		mv.addObject("msg", message);
+		mv.addObject("path", "./noticeList");
+		
+		mv.setViewName("common/result");
+		
+		return mv;
+	}
+	
 	@GetMapping("noticeUpdate")
 	public ModelAndView setUpdate() throws Exception {
 		// 글번호 출력
 		// 글제목, 글내용
 		ModelAndView mv = new ModelAndView();
+		BoardDTO boardDTO = new BoardDTO();
 		
+		mv.addObject("dto", boardDTO);
 		mv.addObject("board", "notice");
 		
 		mv.setViewName("board/boardUpdate");
@@ -34,7 +54,6 @@ public class NoticeController {
 	public ModelAndView setDelete(BoardDTO boardDTO)throws Exception{
 		ModelAndView mv = new ModelAndView();
 		int result = noticeService.setDelete(boardDTO);
-		mv.setViewName("board/boardList");
 		
 		String message = "Delete Fail";
 		if(result>0) {

@@ -23,7 +23,6 @@ public class QnaController {
 	public ModelAndView setDelete(BoardDTO boardDTO)throws Exception{
 		ModelAndView mv = new ModelAndView();
 		int result = qnaService.setDelete(boardDTO);
-		mv.setViewName("board/boardList");
 		
 		String message = "Delete Fail";
 		if(result>0) {
@@ -33,6 +32,7 @@ public class QnaController {
 		mv.addObject("msg", message);
 		mv.addObject("path", "./qnaList");
 		mv.addObject("board", "qna");
+		
 		mv.setViewName("common/result");
 		
 		return mv;
@@ -60,8 +60,11 @@ public class QnaController {
 	public ModelAndView setUpdate() throws Exception {
 		// 글번호 출력
 		// 글제목, 글내용
+		BoardDTO boardDTO = new BoardDTO();
 		ModelAndView mv = new ModelAndView();
-	
+		BoardDTO s = qnaService.getOne(boardDTO);
+		
+		mv.addObject("dto", s);
 		mv.addObject("board", "qna");
 		
 		mv.setViewName("board/boardUpdate");

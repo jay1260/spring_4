@@ -12,7 +12,7 @@
 <c:import url="../template/header.jsp"></c:import>
 <div class="container">
 	<h3>Member Join Page</h3>
-	<form action="./memberJoin" method="post">
+	<form id="frm" action="./memberJoin" method="post">
 	    <div class="form-group">
 	      <label for="id">Id:</label>
 	      <input type="text" class="form-control" id="id" placeholder="Enter Id" name="id">
@@ -34,24 +34,24 @@
 	      <label for="email">Email:</label>
 	      <input type="text" class="form-control" id="email" placeholder="Enter Email" name="email">
 	    </div>
-	    
+	    <input type="button" class="btn btn-primary" value="Submint" id="btn">
 	    <button type="submit" class="btn btn-default">Submit</button>
   </form>
 </div>
 <script type="text/javascript">
-	var pw1 = document.getElementById("pw");
-	var pw2 = document.getElementById("pw2");
-	var pwCheck = document.getElementById("pwCheck");
-	
-	pw2.addEventListener('blur', function() {
-		if(pw1.value != pw2.value){
-			var str = "PW가 일치하지 않습니다.";
-			pwCheck.innerHTML = str;
-		}else{
-			var str = "멋진 비밀번호";
-			pwCheck.innerHTML = str;
-		}
-	});
+var pw1 = document.getElementById("pw");
+var pw2 = document.getElementById("pw2");
+var pwCheck = document.getElementById("pwCheck");
+
+pw2.addEventListener('blur', function() {
+	if(pw1.value != pw2.value){
+		var str = "PW가 일치하지 않습니다.";
+		pwCheck.innerHTML = str;
+	}else{
+		var str = "멋진 비밀번호";
+		pwCheck.innerHTML = str;
+	}
+});
 	
 </script>
 

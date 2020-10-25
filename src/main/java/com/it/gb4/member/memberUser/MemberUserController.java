@@ -22,7 +22,7 @@ public class MemberUserController {
 	public ModelAndView setMemberJoin(MemberDTO memberDTO)throws Exception{
 		ModelAndView mv = new ModelAndView();
 		int result = memberUserService.setMemberJoin(memberDTO);
-		System.out.println(result);
+		
 		mv.setViewName("redirect:../");
 		return mv;
 	}
