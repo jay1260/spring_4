@@ -40,19 +40,10 @@
   </form>
 </div>
 <script type="text/javascript">
-var pw1 = document.getElementById("pw");
-var pw2 = document.getElementById("pw2");
-var pwCheck = document.getElementById("pwCheck");
-
-pw2.addEventListener('blur', function() {
-	if(pw1.value != pw2.value){
-		var str = "PW가 일치하지 않습니다.";
-		pwCheck.innerHTML = str;
-	}else{
-		var str = "멋진 비밀번호";
-		pwCheck.innerHTML = str;
-	}
-});
+	
+	$("#id").blur(function() {
+		$("#idResult").html("벗어나기");
+	});
 	
 </script>
 
