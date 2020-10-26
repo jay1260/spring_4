@@ -13,6 +13,7 @@
   		<typeAlias type="com.it.gb4.member.MemberDTO" alias="MemberDTO"/>
   		<typeAlias type="com.it.gb4.member.memberUser.MemberUserDTO" alias="MemberUserDTO"/>
   		<typeAlias type="com.it.gb4.util.Pager" alias="Pager"/>
+		<typeAlias type="com.it.gb4.board.memo.MemoDTO" alias="MemoDTO"/>
   	
   	</typeAliases>
   </configuration>
