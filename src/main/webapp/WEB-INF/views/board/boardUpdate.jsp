@@ -14,7 +14,7 @@
 <div class="container">
 	 <h1>${board} Update Page</h1>
 	  <form action="./${board}Update" method="post">
-	  <input type="text" name="num" value="${dto.num}"> 
+	  <input type="text" name="num" value="${param.num}"> 
 	    
 	    <div class="form-group">
 	      <label for="title">Title:</label>

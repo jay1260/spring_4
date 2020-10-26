@@ -2,12 +2,15 @@ package com.it.gb4.board.qna;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.it.gb4.board.BoardDTO;
@@ -60,11 +63,12 @@ public class QnaController {
 	public ModelAndView setUpdate() throws Exception {
 		// 글번호 출력
 		// 글제목, 글내용
-		BoardDTO boardDTO = new BoardDTO();
 		ModelAndView mv = new ModelAndView();
-		BoardDTO s = qnaService.getOne(boardDTO);
+		BoardDTO boardDTO = new BoardDTO();
 		
-		mv.addObject("dto", s);
+		boardDTO = qnaService.getOne(boardDTO);
+		
+		mv.addObject("dto", boardDTO);
 		mv.addObject("board", "qna");
 		
 		mv.setViewName("board/boardUpdate");
