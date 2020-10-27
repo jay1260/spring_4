@@ -60,11 +60,11 @@ public class QnaController {
 	}
 	
 	@GetMapping("qnaUpdate")
-	public ModelAndView setUpdate() throws Exception {
+	public ModelAndView setUpdate(BoardDTO boardDTO, long num) throws Exception {
 		// 글번호 출력
 		// 글제목, 글내용
 		ModelAndView mv = new ModelAndView();
-		BoardDTO boardDTO = new BoardDTO();
+		System.out.println(num);
 		
 		boardDTO = qnaService.getOne(boardDTO);
 		
@@ -72,6 +72,7 @@ public class QnaController {
 		mv.addObject("board", "qna");
 		
 		mv.setViewName("board/boardUpdate");
+		
 		return mv;
 	}
 	
