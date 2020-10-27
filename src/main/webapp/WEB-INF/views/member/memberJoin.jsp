@@ -111,23 +111,26 @@
 		idCheck = false; // 한번더 초기화 시켜주기
 		var id = $(this).val();
 		if(id !=''){
+			
+			$.ajax({
+				url : "./memberIdCheck",
+				type : "GET",
+				data : {id:id},
+				success: function(data) {
+					data = data.trim();
+					var str = "중복된 아이디입니다.";
+					
+					$("#idResult").removeClass("idCheck0").addClass("idCheck1");
+					if(data == 0){
+						str = "멋진 아이디입니다.";
+						$("#idResult").removeClass("idCheck1").addClass("idCheck0");
+						idCheck = true;
+					}
+					$("#idResult").html(str);
+				}
+			});
+			
 		
-		$.get("./memberIdCheck?id="+id, function(data) {
-			//a 사용가능, b 사용불가
-			//true 사용가능, false 사용불가
-			//0 사용가능, 1 사용불가
-			data = data.trim();
-			var str = "중복된 아이디입니다.";
-			
-			$("#idResult").removeClass("idCheck0").addClass("idCheck1");
-			if(data == 0){
-				str = "멋진 아이디입니다.";
-				$("#idResult").removeClass("idCheck1").addClass("idCheck0");
-				idCheck = true;
-			}
-			$("#idResult").html(str);
-			
-		});
 		}else{
 			$("#idResult").html("아이디는 필수 항목입니다.");
 			$("#idResult").removeClass("idCheck0").addClass("idCheck1");
