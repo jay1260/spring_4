@@ -33,6 +33,7 @@
 	    <div class="form-group">
 	      <label for="pw2">Password:</label>
 	      <input type="password" class="form-control" id="pw2" placeholder="Enter Password" name="pw2">
+	      <div id="pwResult"></div>	
 	    </div>
 	    <div id="pwCheck"></div>
 	    <div class="form-group">
@@ -43,14 +44,51 @@
 	      <label for="email">Email:</label>
 	      <input type="text" class="form-control" id="email" placeholder="Enter Email" name="email">
 	    </div>
-	    <input type="button" class="btn btn-primary" value="Submint" id="btn">
-	    <button type="submit" class="btn btn-default">Submit</button>
+	    <input type="button" class="btn btn-default" id="join" value="Join">
   </form>
 </div>
 <script type="text/javascript">
+	var idCheck = false;
+	var pwCheck = false;
 	
+	// ***********************join click *****************
+	$("#join").click(function() {
+		
+			if(idCheck && pwCheck){
+				// 중.체크 , 사용가능 ID
+				alert("OK");
+			}else{
+				// 중.노체크, 중복ID
+				alert("NO");
+			}
+		//$("#frm").submit();
+	});
+
+	// *********************** pw Check ****************	
+	$("#pw2").blur(function() {
+		var pw = $("#pw").val();
+		var pw2 = $(this).val();
+		pwCheck = false;
+		
+		if(pw2==''){
+			$("#pwResult").html("비밀번호를 입력하세요.");
+			$("#pwResult").removeClass("idCheck0").addClass("idCheck1");
+		}else if(pw==pw2){
+			$("#pwResult").html("비밀번호가 일치합니다.");
+			$("#pwResult").removeClass("idCheck1").addClass("idCheck0");
+			pwCheck = true;
+		}else{
+			$("#pwResult").html("비밀번호가 일치하지 않습니다.");
+			$("#pwResult").removeClass("idCheck0").addClass("idCheck1");
+		}
+		
+	});
+	
+	// ************************* id Check *****************
 	$("#id").blur(function() {
+		idCheck = false; // 한번더 초기화 시켜주기
 		var id = $(this).val();
+		if(id !=''){
 		
 		$.get("./memberIdCheck?id="+id, function(data) {
 			//a 사용가능, b 사용불가
@@ -58,14 +96,22 @@
 			//0 사용가능, 1 사용불가
 			data = data.trim();
 			var str = "중복된 아이디입니다.";
-			$("#idResult").addClass("idCheck1");
+			
+			$("#idResult").removeClass("idCheck0").addClass("idCheck1");
 			if(data == 0){
 				str = "멋진 아이디입니다.";
 				$("#idResult").removeClass("idCheck1").addClass("idCheck0");
+				idCheck = true;
 			}
 			$("#idResult").html(str);
+			
 		});
+		}else{
+			$("#idResult").html("아이디는 필수 항목입니다.");
+			$("#idResult").removeClass("idCheck0").addClass("idCheck1");
+		}
 	});
+	
 	
 </script>
 
