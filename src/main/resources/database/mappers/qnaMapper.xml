@@ -52,7 +52,7 @@
     		step> (select step from qna where num=#{num})
     	</update>
     	
-    	<select id="getOne" parameterType="Long" resultType="QnaDTO">
+    	<select id="getOne" parameterType="QnaDTO" resultType="QnaDTO">
     		select * from qna where num = #{num}
     	</select>
     	
