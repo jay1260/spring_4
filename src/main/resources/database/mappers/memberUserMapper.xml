@@ -6,22 +6,22 @@
 <mapper namespace="com.it.gb4.member.memberUser.MemberUserDAO">
 	
 	<select id="getMemberIdCheck" resultType="MemberDTO" parameterType="MemberDTO">
-		select id from member_lgb where id = #{id}
+		select id from member where id = #{id}
 	</select>
 	
 	<select id="getMemberLogin" parameterType="MemberDTO" resultType="MemberUserDTO">
-		select * from member_lgb where id=#{id} and pw=#{pw}
+		select * from member where id=#{id} and pw=#{pw}
 	</select>
 	
 	<update id="setMemberUpdate" parameterType="MemberDTO">
-		update member_lgb set name=#{name}, email=#{email} where id=#{id}
+		update member set name=#{name}, email=#{email} where id=#{id}
 	</update>
 	
 	<delete id="setMemberDelete" parameterType="MemberDTO">
-		delete member_lgb where id=#{id}
+		delete member where id=#{id}
 	</delete>
 	
 	<insert id="setMemberJoin" parameterType="MemberDTO">
-		insert into member_lgb values(member_seq.nextval, #{id}, #{pw}, #{name}, #{email})
+		insert into member values(member_seq.nextval, #{id}, #{pw}, #{name}, #{email})
 	</insert>
 </mapper>

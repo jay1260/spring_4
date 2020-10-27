@@ -6,24 +6,24 @@
 <mapper namespace="com.it.gb4.board.notice.NoticeDAO">
 	<!-- 데이터 수정 -->
 	<update id="setUpdate" parameterType="NoticeDTO">
-		update board set title=#{title}, contents=#{contents} where num = #{num}
+		update notice set title=#{title}, contents=#{contents} where num = #{num}
 	</update>
 
 	<!-- 데이터 삭제 -->
 	<delete id="setDelete" parameterType="NoticeDTO">
-		delete board where num = #{num}
+		delete notice where num = #{num}
 	</delete>
 	
 	<!-- 데이터 추가 -->
 	<insert id="setInsert" parameterType="NoticeDTO">
-		insert into board values(notice.nextval,#{title},#{writer},#{contents},sysdate,0)
+		insert into notice values(notice_seq.nextval,#{title},#{writer},#{contents},sysdate,0)
 	</insert>
 	
 	<!-- 전체 데이터 보기 -->
 	<select id="getList" resultType="NoticeDTO" parameterType="Pager">
 		select * from
 		(select rownum R, N.* from
-		(select * from board where
+		(select * from notice where
 		<choose>
 			<when test="kind == 'tt'">
 				title
@@ -40,7 +40,7 @@
 	</select>
 	
 	<select id="getCount" resultType="Long" parameterType="Pager">
-		select count(num) from board where
+		select count(num) from notice where
 		<choose>
 			<when test="kind=='tt'">
 				title
@@ -57,7 +57,7 @@
 	
 	<!-- 하나의 데이터 보기 -->
 	<select id="getOne" parameterType="NoticeDTO" resultType="NoticeDTO">
-		select * from board where num = #{num}
+		select * from notice where num = #{num}
 		<!-- DAO에서 선언한 변수명과 일치시켜 입력해준다. -->
 	</select>
 </mapper>
