@@ -39,8 +39,8 @@
 	</div>
 	
 <script type="text/javascript">
-	var curPage = 1;
-	getList();
+	var curPage = 1; // curPage를 1번으로 시작
+	getList(); // getList 함수 호출
 	
 	// ********************** More *************************
 	$("#more").click(function() {
@@ -60,9 +60,9 @@
 				data=data.trim();
 				if(data>0){
 					alert("삭제 완료");
-					$("#result").html('');
-					curPage=1;
-					getList();
+					$("#result").html(''); // result html 초기화 시켜주기
+					curPage=1; // curPage 1번으로 초기화
+					getList(); // getList 함수 호출
 				}else{
 					alert("Delete Fail");
 				}
@@ -84,9 +84,9 @@
 				alert(result);
 				$("#writer").val('');
 				$("#contents").val('');
-				$("#result").html('');
-				curPage=1;
-				getList();
+				$("#result").html(''); // result html 초기화시켜주기
+				curPage=1; // Page 1번으로 초기화
+				getList(); // getList 함수호출
 			}
 		});
 		
@@ -99,9 +99,10 @@
 		$.ajax({
 			url:"./memoList",
 			type:"GET",
-			data:{curPage:curPage},
+			data:{curPage:curPage}, // curPage를 파라미터로 
 			success: function(data) {
-				$("#result").append(data);
+				$("#result").append(data); 
+				// 요소 내부 마지막 부분에 값을 추가한다.
 			}
 		});	
 	}
