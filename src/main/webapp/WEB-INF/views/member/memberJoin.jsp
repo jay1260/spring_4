@@ -26,6 +26,7 @@
 	      <input type="text" class="form-control" id="id" placeholder="Enter Id" name="id">
 	  	  <div id="idResult"></div>	
 	    </div>
+	    
 	    <div class="form-group">
 	      <label for="pw">Password:</label>
 	      <input type="password" class="form-control" id="pw" placeholder="Enter Password" name="pw">
@@ -35,26 +36,30 @@
 	      <input type="password" class="form-control" id="pw2" placeholder="Enter Password" name="pw2">
 	      <div id="pwResult"></div>	
 	    </div>
-	    <div id="pwCheck"></div>
+	    
 	    <div class="form-group">
 	      <label for="name">Name:</label>
-	      <input type="text" class="form-control" id="name" placeholder="Enter Name" name="name">
+	      <input type="text" class="form-control empty"  id="name" placeholder="Enter Name" name="name">
+	      <div class = "emptyResult"></div>	
 	    </div>
+	    
 	    <div class="form-group">
 	      <label for="email">Email:</label>
-	      <input type="text" class="form-control" id="email" placeholder="Enter Email" name="email">
-	    </div>
+	      <input type="text" class="form-control empty" id="email" placeholder="Enter Email" name="email">
+		  <div class = "emptyResult"></div>	    
+ 	    </div>
 	    <input type="button" class="btn btn-default" id="join" value="Join">
   </form>
 </div>
 <script type="text/javascript">
 	var idCheck = false;
 	var pwCheck = false;
+	var emptyCheckResult = true;
 	
 	// ***********************join click *****************
 	$("#join").click(function() {
-		
-			if(idCheck && pwCheck){
+			emptyCheck();
+			if(idCheck && pwCheck && emptyCheckResult){
 				// 중.체크 , 사용가능 ID
 				alert("OK");
 			}else{
@@ -63,6 +68,23 @@
 			}
 		//$("#frm").submit();
 	});
+	
+	// ******************* empty check ***********************
+	function emptyCheck() {
+		emptyCheckResult = true;
+		$(".emptyResult").removeClass("idCheck1");
+		$(".emptyResult").html('');
+		$(".empty").each(function() {
+			var data = $(this).val();
+			if(data==''){
+				emptyCheckResult = false;
+				$(this).next().html("필수 항목입니다.");
+				$(".emptyResult").addClass("idCheck1");
+			}
+		});
+		
+	}
+	
 
 	// *********************** pw Check ****************	
 	$("#pw2").blur(function() {
