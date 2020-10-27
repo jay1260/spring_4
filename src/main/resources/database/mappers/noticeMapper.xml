@@ -6,7 +6,7 @@
 <mapper namespace="com.it.gb4.board.notice.NoticeDAO">
 	<!-- 데이터 수정 -->
 	<update id="setUpdate" parameterType="NoticeDTO">
-		update notice set title=#{title}, contents=#{contents} where num = #{num}
+			update notice set title=#{title}, contents=#{contents} where num = #{num}
 	</update>
 
 	<!-- 데이터 삭제 -->
