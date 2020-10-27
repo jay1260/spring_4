@@ -61,12 +61,12 @@
 			emptyCheck();
 			if(idCheck && pwCheck && emptyCheckResult){
 				// 중.체크 , 사용가능 ID
-				alert("OK");
-			}else{
-				// 중.노체크, 중복ID
-				alert("NO");
+				$("#frm").submit();
 			}
-		//$("#frm").submit();
+		//	else{
+				// 중.노체크, 중복ID
+		//		alert("NO");
+		//	}
 	});
 	
 	// ******************* empty check ***********************
