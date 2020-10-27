@@ -12,6 +12,13 @@ public class MemberUserService implements MemberService {
 	@Autowired
 	private MemberUserDAO memberUserDAO;
 	
+	// 5.
+	@Override
+	public MemberDTO getMemberIdCheck(MemberDTO memberDTO) throws Exception {
+		// TODO Auto-generated method stub
+		return memberUserDAO.getMemberIdCheck(memberDTO);
+	}
+	
 	// 4.
 	@Override
 	public int setMemberJoin(MemberDTO memberDTO) throws Exception {

@@ -13,4 +13,7 @@ public interface MemberDAO {
 
 	// insert
 	public int setMemberJoin(MemberDTO memberDTO) throws Exception;
+	
+	// idCheck
+	public MemberDTO getMemberIdCheck(MemberDTO memberDTO)throws Exception;
 }

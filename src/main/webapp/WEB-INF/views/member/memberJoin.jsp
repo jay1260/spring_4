@@ -7,6 +7,14 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <c:import url="../template/bootStrap.jsp"></c:import>
+<style type="text/css">
+	.idCheck0{
+		color: blue;
+	}
+	.idCheck1{
+		color: red;
+	}
+</style>
 </head>
 <body>
 <c:import url="../template/header.jsp"></c:import>
@@ -42,7 +50,21 @@
 <script type="text/javascript">
 	
 	$("#id").blur(function() {
-		$("#idResult").html("벗어나기");
+		var id = $(this).val();
+		
+		$.get("./memberIdCheck?id="+id, function(data) {
+			//a 사용가능, b 사용불가
+			//true 사용가능, false 사용불가
+			//0 사용가능, 1 사용불가
+			data = data.trim();
+			var str = "중복된 아이디입니다.";
+			$("#idResult").addClass("idCheck1");
+			if(data == 0){
+				str = "멋진 아이디입니다.";
+				$("#idResult").removeClass("idCheck1").addClass("idCheck0");
+			}
+			$("#idResult").html(str);
+		});
 	});
 	
 </script>

@@ -13,7 +13,7 @@ public class MemberUserDAOTest extends MyTestCase{
 	@Autowired
 	private MemberUserDAO memberUserDAO;
 
-	@Test
+	//@Test
 	public void getMemberLoginTest() throws Exception {
 		MemberDTO memberDTO = new MemberDTO();
 		
@@ -23,5 +23,14 @@ public class MemberUserDAOTest extends MyTestCase{
 		memberDTO = memberUserDAO.getMemberLogin(memberDTO);
 		
 		assertNotNull(memberDTO);
+	}
+	
+	@Test
+	public void getMemberIdCheckTest() throws Exception{
+		MemberDTO memberDTO = new MemberDTO();
+		memberDTO.setId("id1");
+		memberDTO = memberUserDAO.getMemberIdCheck(memberDTO);
+		
+		assertNull(memberDTO);
 	}
 }
