@@ -6,10 +6,13 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.it.gb4.member.MemberDTO;
 import com.it.gb4.member.MemberService;
+import com.it.gb4.member.memberFile.MemberFileDAO;
+import com.it.gb4.member.memberFile.MemberFileDTO;
 import com.it.gb4.util.FileSaver;
 
 @Service
@@ -17,6 +20,8 @@ public class MemberUserService implements MemberService {
 	
 	@Autowired
 	private MemberUserDAO memberUserDAO;
+	@Autowired
+	private MemberFileDAO memberFileDAO;
 	@Autowired
 	private FileSaver fileSaver;
 	
@@ -34,10 +39,19 @@ public class MemberUserService implements MemberService {
 		System.out.println(path);
 		File file = new File(path);
 		
-		fileSaver.saveCopy(file, photo);
+		String filename = fileSaver.saveCopy(file, photo);
 		
+		// memberFile Insert 순서 중요!!
+		MemberFileDTO memberFileDTO = new MemberFileDTO();
+		memberFileDTO.setId(memberDTO.getId());
+		memberFileDTO.setFileName(filename);
+		memberFileDTO.setOriName(photo.getOriginalFilename());
 		
-		return 0;//memberUserDAO.setMemberJoin(memberDTO);
+		int result = memberUserDAO.setMemberJoin(memberDTO);
+		
+		result = memberFileDAO.setInsert(memberFileDTO);
+		
+		return result;
 	}
 	
 	// 3.

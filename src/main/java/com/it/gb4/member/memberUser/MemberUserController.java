@@ -11,13 +11,17 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.it.gb4.member.MemberDTO;
+import com.it.gb4.member.memberFile.MemberFileDTO;
+import com.it.gb4.member.memberFile.MemberFileService;
 
 @Controller
 @RequestMapping("/member/**")
 public class MemberUserController {
 	
 	@Autowired
-	public MemberUserService memberUserService;
+	private MemberUserService memberUserService;
+	@Autowired
+	private MemberFileService memberFileService;
 	
 	// idCheck
 	@GetMapping("memberIdCheck")
@@ -108,6 +112,7 @@ public class MemberUserController {
 	@GetMapping("memberPage")
 	public ModelAndView getMemberPage()throws Exception{
 		ModelAndView mv = new ModelAndView();
+		
 		mv.setViewName("member/memberPage");
 		return mv;
 	}
