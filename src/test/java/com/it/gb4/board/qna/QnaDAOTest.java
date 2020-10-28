@@ -16,7 +16,7 @@ public class QnaDAOTest extends MyTestCase {
 	@Autowired
 	private QnaDAO qnaDAO;
 
-	@Test
+	//@Test
 	public void getListTest() throws Exception{
 		Pager pager = new Pager();
 		pager.makeRow();

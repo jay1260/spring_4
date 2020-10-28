@@ -55,6 +55,9 @@
  	    </div>
  	    
 	    <input type="button" class="btn btn-default" id="join" value="Join">
+  		
+  		<!-- 잠시만 쓰는것 테스트를 위해서 -->
+  		<button>Test Join</button>
   </form>
 </div>
 <script type="text/javascript">

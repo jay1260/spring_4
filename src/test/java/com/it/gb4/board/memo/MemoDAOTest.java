@@ -15,7 +15,7 @@ public class MemoDAOTest extends MyTestCase {
 	@Autowired
 	private MemoDAO memoDAO;
 
-	@Test
+	//@Test
 	public void getListTest() throws Exception{
 		Pager pager = new Pager();
 		pager.makeRow();

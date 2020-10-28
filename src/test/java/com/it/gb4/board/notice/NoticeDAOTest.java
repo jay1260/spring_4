@@ -16,7 +16,7 @@ public class NoticeDAOTest extends MyTestCase {
 	@Autowired
 	private NoticeDAO noticeDAO;
 
-	@Test
+	//@Test
 	public void getListTest() throws Exception{
 		Pager pager = new Pager();
 		pager.makeRow();
