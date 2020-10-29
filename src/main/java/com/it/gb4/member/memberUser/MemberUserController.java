@@ -11,7 +11,6 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.it.gb4.member.MemberDTO;
-import com.it.gb4.member.MemberService;
 import com.it.gb4.member.memberFile.MemberFileDTO;
 
 @Controller
@@ -108,11 +107,14 @@ public class MemberUserController {
 	
 	// 3.
 	@GetMapping("memberPage")
-	public ModelAndView getMemberPage(HttpSession session)throws Exception{
+	public ModelAndView getMemberPage()throws Exception{
 		ModelAndView mv = new ModelAndView();
-		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
-		MemberFileDTO memberFileDTO = memberUserService.getOne(memberDTO);
-		mv.addObject("file", memberFileDTO);
+
+//		// getOne을 memberFileDTO에 리턴해서 file변수에 담아서 보내는 방식
+//		// memberFile이랑 memberUser 쿼리문에서 각각 정보를 가져올 때,
+//		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+//		MemberFileDTO memberFileDTO = memberUserService.getOne(memberDTO);
+//		mv.addObject("file", memberFileDTO);
 		mv.setViewName("member/memberPage");
 		return mv;
 	}

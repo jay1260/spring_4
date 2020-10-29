@@ -55,9 +55,20 @@
 		like '%'||#{search}||'%'
 	</select>
 	
+	
+	<!-- getOne 테스트해본 것 -->
+	<resultMap type="NoticeDTO" id="getOneResult">
+		<!-- primary key는 id로 지정 -->
+		<id column="n" property="num"/>
+		<!-- 그외 나머지는 result로 지정 -->
+		<result column="t" property="title"/>
+		<result column="writer" property="writer"/>
+		<result column="contents" property="contents"/>
+	</resultMap>
+	
 	<!-- 하나의 데이터 보기 -->
-	<select id="getOne" parameterType="NoticeDTO" resultType="NoticeDTO">
-		select * from notice where num = #{num}
+	<select id="getOne" parameterType="NoticeDTO" resultType="NoticeDTO" resultMap="getOneResult">
+		select num as n, title as t, writer,contents from notice where num = #{num}
 		<!-- DAO에서 선언한 변수명과 일치시켜 입력해준다. -->
 	</select>
 </mapper>
