@@ -9,7 +9,7 @@
 		insert into memberFile values(member_seq.nextval, #{id},#{fileName},#{oriName})	
 	</insert>
 	
-	<select id="getOne" resultType="MemberFileDTO" parameterType="MemberFileDTO">
+	<select id="getOne" parameterType="MemberDTO" resultType="MemberFileDTO">
 		select * from memberFile where id=#{id}
 	</select>
 	

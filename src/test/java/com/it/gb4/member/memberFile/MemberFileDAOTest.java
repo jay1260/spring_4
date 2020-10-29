@@ -24,16 +24,5 @@ public class MemberFileDAOTest extends MyTestCase {
 		
 		assertEquals(1, result);
 	}
-	
-	@Test
-	public void getOneTest() throws Exception{
-		MemberFileDTO memberFileDTO = new MemberFileDTO();
-		memberFileDTO.setId("t1");
-		
-		memberFileDTO = memberFileDAO.getOne(memberFileDTO);
-		
-		System.out.println(memberFileDTO.getFileName());
-		
-		assertNotNull(memberFileDTO);
-	}
+
 }

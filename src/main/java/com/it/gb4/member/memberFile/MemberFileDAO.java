@@ -4,6 +4,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.it.gb4.member.MemberDTO;
+
 @Repository
 public class MemberFileDAO {
 	
@@ -16,8 +18,8 @@ public class MemberFileDAO {
 		return sqlSession.insert(NAMESPACE+"setInsert", memberFileDTO);
 	}
 	
-	public MemberFileDTO getOne(MemberFileDTO memberFileDTO) throws Exception{
-		return sqlSession.selectOne(NAMESPACE+"getOne",memberFileDTO);
+	public MemberFileDTO getOne(MemberDTO memberDTO) throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"getOne",memberDTO);
 	}
 
 }
