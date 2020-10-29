@@ -24,14 +24,10 @@ public class NoticeService implements BoardService {
 	private FileSaver fileSaver;
 	
 	@Override
-	public int setInsert(BoardDTO boardDTO,MultipartFile files,HttpSession session) throws Exception {
-		String path = session.getServletContext().getRealPath("/resources/upload/notice");
-		System.out.println(path);
+	public int setInsert(BoardDTO boardDTO) throws Exception {
 		
-		File file = new File(path);
 		
-		fileSaver.saveCopy(file, files);
-		return 0;//noticeDAO.setInsert(boardDTO);
+		return 0; //noticeDAO.setInsert(boardDTO);
 	}
 
 	@Override

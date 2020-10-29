@@ -11,28 +11,29 @@
 <body>
 <c:import url="../template/header.jsp"></c:import>
 	
-	<div class="container">
-	 <h3>${board} Reply Page</h3>
-	  <form action="./${board}Reply" method="post">
-	    <input type="hidden" name ="num" value="${param.num}"> 
-	   
-	    <div class="form-group">
-	      <label for="title">Title:</label>
-	      <input type="text" class="form-control" id="title" placeholder="Enter Title" name="title">
-	    </div>
-	    
-	     <div class="form-group">
-	      <label for="writer">Writer:</label>
-	      <input type="text" class="form-control" id="writer" placeholder="Enter Writer" name="writer">
-	    </div>
-	    
-	     <div class="form-group">
-	      <label for="contents">Contents:</label>
-	      <textarea class="form-control" rows="10" id="contents" name="contents"></textarea>
-	    </div>
-	    
-	    <button type="submit" class="btn btn-default">Reply</button>
-	  </form>
+<div class="container">
+	<h3>${board} Reply Page</h3>
+	<form action="./${board}Reply" method="post">
+	<input type="hidden" name ="num" value="${param.num}"> 
+	
+	<div class="form-group">
+		<label for="title">Title:</label>
+		<input type="text" class="form-control" id="title" placeholder="Enter Title" name="title">
 	</div>
+	
+	<div class="form-group">
+		<label for="writer">Writer:</label>
+		<input type="text" class="form-control" id="writer" placeholder="Enter Writer" name="writer">
+	</div>
+	
+	<div class="form-group">
+		<label for="contents">Contents:</label>
+		<textarea class="form-control" rows="10" id="contents" name="contents"></textarea>
+	</div>
+	
+	<button type="submit" class="btn btn-default">Reply</button>
+	</form>
+</div>
+
 </body>
 </html>
