@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.it.gb4.MyTestCase;
 import com.it.gb4.board.BoardDTO;
+import com.it.gb4.board.file.BoardFileDTO;
 import com.it.gb4.util.Pager;
 
 public class NoticeDAOTest extends MyTestCase {
@@ -16,6 +17,20 @@ public class NoticeDAOTest extends MyTestCase {
 	@Autowired
 	private NoticeDAO noticeDAO;
 
+	@Test
+	public void setInsertFileTest() throws Exception{
+		BoardFileDTO boardFileDTO = new BoardFileDTO();
+
+		boardFileDTO.setNum(8);
+		boardFileDTO.setFileName("f2");
+		boardFileDTO.setOriName("o2");
+		
+		int result = noticeDAO.setInsertFile(boardFileDTO);
+		System.out.println(result);
+		
+		assertNotEquals(0, result);
+	}
+	
 	//@Test
 	public void getListTest() throws Exception{
 		Pager pager = new Pager();

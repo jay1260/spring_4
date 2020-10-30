@@ -29,9 +29,11 @@
 		<result column="email" property="email"/>
 		<!-- 1:1 관게일 때 다른 DTO에 있는 DTO -->
 		<association property="memberFileDTO" javaType="MemberFileDTO" resultMap="memberFileResult">
+		<!-- 따로 선언후 resultMap으로 받는다. javaType선언 필수 -->
 		</association>
 	</resultMap>
 	
+	<!-- association의 resultMap에 보낸다. -->
 	<resultMap type="MemberFileDTO" id="memberFileResult">
 			<id column="num" property="num"/>
 			<result column="id" property="id"/>

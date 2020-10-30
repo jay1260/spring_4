@@ -1,6 +1,9 @@
 package com.it.gb4.board;
 
 import java.sql.Date;
+import java.util.List;
+
+import com.it.gb4.board.file.BoardFileDTO;
 
 public class BoardDTO {
 	
@@ -10,6 +13,16 @@ public class BoardDTO {
 	private String contents;
 	private Date regDate;
 	private long hit;
+	
+	// 여러개의 파일이 있기에 List로
+	List<BoardFileDTO> boardFileDTOs;
+	
+	public List<BoardFileDTO> getBoardFileDTOs() {
+		return boardFileDTOs;
+	}
+	public void setBoardFileDTOs(List<BoardFileDTO> boardFileDTOs) {
+		this.boardFileDTOs = boardFileDTOs;
+	}
 	
 	public long getNum() {
 		return num;
