@@ -19,7 +19,7 @@
 	<h3>Contents : ${dto.contents}</h3>
 	<div>
 	<c:forEach items="${dto.boardFileDTOs}" var="file">
-		<a href="../resources/upload/${board}/${file.fileName}"> ${file.oriName}</a>
+		<a href="./fileDown?fileName=${file.fileName}&oriName=${file.oriName}">${file.oriName}</a>
 		<hr>
 	</c:forEach>
 	</div>
