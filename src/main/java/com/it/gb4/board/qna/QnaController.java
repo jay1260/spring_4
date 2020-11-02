@@ -33,7 +33,7 @@ public class QnaController {
 		
 		System.out.println(fileName);
 		
-		mv.addObject("msg", "summernote File");
+		mv.addObject("msg", fileName);
 		mv.setViewName("common/ajaxResult");
 		
 		return mv;
