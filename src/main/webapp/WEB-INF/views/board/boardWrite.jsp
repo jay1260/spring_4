@@ -7,6 +7,10 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <c:import url="../template/bootStrap.jsp"></c:import>
+<!-- include summernote css/js -->
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+
 <style type="text/css">
     .del {
         color: red;
@@ -60,6 +64,17 @@
 </div>
 <script type="text/javascript">
 	var count = 0;
+	
+	// Writer 폼 summernote 사용
+	$("#contents").summernote({
+		height : 300,
+		code : "Hello"
+	});
+	
+	$("#btn").click(function() {
+		var contents = $("#contents").summernote("code");
+		alert(contents);
+	});
 	
 	$("#files").on("click",".del", function() {
 		$(this).parent().remove();

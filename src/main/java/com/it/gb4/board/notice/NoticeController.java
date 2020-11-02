@@ -51,16 +51,19 @@ public class NoticeController {
 	}
 	
 	@GetMapping("noticeUpdate")
-	public ModelAndView setUpdate() throws Exception {
+	public ModelAndView setUpdate(BoardDTO boardDTO, long num) throws Exception {
 		// 글번호 출력
 		// 글제목, 글내용
 		ModelAndView mv = new ModelAndView();
-		BoardDTO boardDTO = new BoardDTO();
+		System.out.println(num);
+		
+		boardDTO = noticeService.getOne(boardDTO);
 		
 		mv.addObject("dto", boardDTO);
 		mv.addObject("board", "notice");
 		
 		mv.setViewName("board/boardUpdate");
+		
 		return mv;
 	}
 	
