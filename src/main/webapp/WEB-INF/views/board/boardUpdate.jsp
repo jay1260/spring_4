@@ -26,12 +26,12 @@
 	
 	<div class="form-group">
 		<label for="writer">Writer:</label>
-		<input type="text" class="form-control" id="writer" placeholder="Enter Writer" name="writer" value="${dto.writer}">
+		<input type="text" class="form-control" id="writer" placeholder="Enter Writer" name="writer" value="${dto.writer}" readonly="readonly">
 	</div>
 	
 	<div class="form-group">
 		<label for="contents">Contents:</label>
-		<textarea class="form-control" rows="10" id="contents" name="contents">${dto.contents}</textarea>
+		<textarea class="form-control" rows="10" id="contents" name="contents"></textarea>
 	</div>
 	
 	<button type="submit" class="btn btn-default">Update</button>
@@ -41,6 +41,7 @@
 	$("#contents").summernote({
 		height : 300
 	});
+	$("#contents").summernote('code','${dto.contents}');
 </script>	
 </body>
 </html>

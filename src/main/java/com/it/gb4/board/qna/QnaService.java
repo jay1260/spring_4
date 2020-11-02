@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.it.gb4.board.BoardDTO;
@@ -22,6 +23,16 @@ public class QnaService implements BoardService {
 	private QnaDAO qnaDAO;
 	@Autowired
 	private FileSaver fileSaver;
+	
+	public String summernote(HttpSession session, MultipartFile file)throws Exception{
+		// 파일을 HDD에 저장하고 저장된 파일명을 리턴
+		String path = session.getServletContext().getRealPath("/resources/upload/qna/");
+		File dest = new File(path);
+		
+		String fileName = fileSaver.saveCopy(dest, file);
+		
+		return fileName;
+	}
 	
 	public int setReply(BoardDTO boardDTO) throws Exception{
 		int result = qnaDAO.setReplyUpdate(boardDTO);

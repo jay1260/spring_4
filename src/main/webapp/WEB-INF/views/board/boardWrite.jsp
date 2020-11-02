@@ -68,7 +68,25 @@
 	// Writer 폼 summernote 사용
 	$("#contents").summernote({
 		height : 300,
-		code : "Hello"
+		callbacks:{
+			onImageUpload: function(files, editor) {
+				var formData = new FormData();		// 가상의 form 태그
+				formData.append('file', files[0]); // 파라미터 이름은 file입니다.
+				
+				$.ajax({
+					type:"POST",
+					url:"./summernote",
+					data:formData,
+					cache:false,
+					contentType:false,
+					enctype:"multipart/form-data",
+					processData:false,
+					success: function(data) {
+						alert(data);
+					}
+				});
+			}
+		}
 	});
 	
 	$("#btn").click(function() {
