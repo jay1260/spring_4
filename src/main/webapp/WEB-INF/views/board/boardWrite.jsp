@@ -75,12 +75,30 @@
 				
 				$.ajax({
 					type:"POST",
-					url:"./summernote",
+					url:"summernote",
 					data:formData,
 					cache:false,
 					contentType:false,
 					enctype:"multipart/form-data",
 					processData:false,
+					success: function(data) {
+						data = data.trim();
+						$("#contents").summernote('editor.insertImage', data);
+					}
+				});
+			},// onImageUpload
+			
+			onMediaDelete:function(files){
+				var fileName = $(files[0]).attr("src");
+				// fileName에서 파일명만 구해오기
+				fileName = fileName.substring(fileName.lastIndexOf("\\")+1);
+				
+				$.ajax({
+					type:"POST",
+					url:"./summernoteDelete",
+					data:{
+						file:fileName
+					},
 					success: function(data) {
 						alert(data);
 					}
