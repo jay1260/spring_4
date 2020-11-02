@@ -20,7 +20,7 @@
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
 		
-		<!-- 파일 다운링크를 위해 실행 순서를 1로 지정한 것 -->
+		<!-- 파일 다운링크를 위해 실행 순서를 1로 변경한 것 -->
 		<beans:property name="order" value="1"></beans:property>
 	</beans:bean>
 	
@@ -28,7 +28,7 @@
 		<beans:property name="order" value="0"></beans:property>
 	</beans:bean>
 	<!-- 객체 생성하는 것 -->
-	<beans:bean class="com.it.gb4.util.FileDown" id="fileDown"></beans:bean>
+	
 	
 	<context:component-scan base-package="com.it.gb4" />
 	

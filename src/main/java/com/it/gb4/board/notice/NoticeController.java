@@ -13,6 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.it.gb4.board.BoardDTO;
+import com.it.gb4.board.file.BoardFileDTO;
 import com.it.gb4.util.Pager;
 
 @Controller
@@ -20,6 +21,16 @@ import com.it.gb4.util.Pager;
 public class NoticeController {
 	@Autowired
 	private NoticeService noticeService;
+	
+	@GetMapping("fileDown")
+	public ModelAndView fileDown(BoardFileDTO boardFileDTO) throws Exception{
+		ModelAndView mv = new ModelAndView();
+
+		mv.addObject("board", "notice");
+		mv.addObject("fileDTO", boardFileDTO);
+		mv.setViewName("fileDown");
+		return mv;
+	}
 	
 	@PostMapping("noticeUpdate")
 	public ModelAndView setUpdate(BoardDTO boardDTO) throws Exception{
