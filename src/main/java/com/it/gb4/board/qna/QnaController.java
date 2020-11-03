@@ -104,13 +104,11 @@ public class QnaController {
 		// 글번호 출력
 		// 글제목, 글내용
 		ModelAndView mv = new ModelAndView();
-		System.out.println(num);
 		
 		boardDTO = qnaService.getOne(boardDTO);
 		
 		mv.addObject("dto", boardDTO);
 		mv.addObject("board", "qna");
-		
 		mv.setViewName("board/boardUpdate");
 		
 		return mv;
