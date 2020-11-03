@@ -65,6 +65,9 @@
 <script type="text/javascript">
 	var count = 0;
 	
+	// summernote만 사용
+	//$("#contents").summernote();
+	
 	// Writer 폼 summernote 사용
 	$("#contents").summernote({
 		height : 300,
