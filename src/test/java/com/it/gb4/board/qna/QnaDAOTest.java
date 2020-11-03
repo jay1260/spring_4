@@ -9,14 +9,27 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.it.gb4.MyTestCase;
 import com.it.gb4.board.BoardDTO;
+import com.it.gb4.board.file.BoardFileDTO;
 import com.it.gb4.util.Pager;
 
 public class QnaDAOTest extends MyTestCase {
 
 	@Autowired
 	private QnaDAO qnaDAO;
-
+	
 	@Test
+	public void getInsertFileTest() throws Exception{
+		BoardFileDTO boardFileDTO = new BoardFileDTO();
+		boardFileDTO.setNum(4);
+		boardFileDTO.setFileName("f1");
+		boardFileDTO.setOriName("o1");
+		
+		int result = qnaDAO.setInsertFile(boardFileDTO);
+		
+		assertEquals(1, result);
+	}
+
+	//@Test
 	public void getListTest() throws Exception{
 		Pager pager = new Pager();
 		pager.makeRow();

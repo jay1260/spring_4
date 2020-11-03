@@ -5,14 +5,6 @@
 
 <mapper namespace="com.it.gb4.member.memberUser.MemberUserDAO">
 	
-	<select id="getMemberIdCheck" resultType="MemberDTO" parameterType="MemberDTO">
-		select id from member where id = #{id}
-	</select>
-	
-	<select id="getMemberLogin" parameterType="MemberDTO" resultType="MemberUserDTO">
-		select * from member where id=#{id} and pw=#{pw}
-	</select>
-	
 	<update id="setMemberUpdate" parameterType="MemberDTO">
 		update member set name=#{name}, email=#{email} where id=#{id}
 	</update>
@@ -24,4 +16,37 @@
 	<insert id="setMemberJoin" parameterType="MemberDTO">
 		insert into member values(member_seq.nextval, #{id}, #{pw}, #{name}, #{email})
 	</insert>
+	
+	<select id="getMemberIdCheck" resultType="MemberDTO" parameterType="MemberDTO">
+		select id from member where id = #{id}
+	</select>
+	
+	<resultMap type="MemberDTO" id="getMemberLoginResult">
+		<id column="num" property="num"/>
+		<result column="id" property="id"/>
+		<result column="pw" property="pw"/>
+		<result column="name" property="name"/>
+		<result column="email" property="email"/>
+		<!-- 1:1 관게일 때 다른 DTO에 있는 DTO -->
+		<association property="memberFileDTO" javaType="MemberFileDTO" resultMap="memberFileResult">
+		<!-- 따로 선언후 resultMap으로 받는다. javaType선언 필수 -->
+		</association>
+	</resultMap>
+	
+	<!-- association의 resultMap에 보낸다. -->
+	<resultMap type="MemberFileDTO" id="memberFileResult">
+			<id column="num" property="num"/>
+			<result column="id" property="id"/>
+			<result column="filename" property="fileName"/>
+			<result column="oriname" property="oriName"/>
+	</resultMap>
+	
+	<select id="getMemberLogin" parameterType="MemberDTO" resultMap="getMemberLoginResult">
+		select M.*, MF.filename, MF.oriname 
+		from member M inner join memberFile MF
+		on (M.id = MF.id)
+		where M.id = #{id} and M.pw = #{pw}
+	</select>
+	
+	
 </mapper>

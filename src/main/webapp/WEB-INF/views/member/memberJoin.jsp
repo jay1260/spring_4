@@ -20,7 +20,7 @@
 <c:import url="../template/header.jsp"></c:import>
 <div class="container">
 	<h3>Member Join Page</h3>
-	<form id="frm" action="./memberJoin" method="post">
+	<form id="frm" action="./memberJoin" method="post" enctype="multipart/form-data">
 	    <div class="form-group">
 	      <label for="id">Id:</label>
 	      <input type="text" class="form-control" id="id" placeholder="Enter Id" name="id">
@@ -48,7 +48,16 @@
 	      <input type="text" class="form-control empty" id="email" placeholder="Enter Email" name="email">
 		  <div class = "emptyResult"></div>	    
  	    </div>
+ 	    
+ 	    <div class="form-group">
+	      <label for="photo">Photo:</label>
+	      <input type="file" class="form-control" id="photo" name="photo">
+ 	    </div>
+ 	    
 	    <input type="button" class="btn btn-default" id="join" value="Join">
+  		
+  		<!-- 잠시만 쓰는것 테스트를 위해서 -->
+  		<button>Test Join</button>
   </form>
 </div>
 <script type="text/javascript">

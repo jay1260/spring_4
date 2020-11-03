@@ -1,13 +1,24 @@
 package com.it.gb4.member;
 
-public class MemberDTO {
+import com.it.gb4.member.memberFile.MemberFileDTO;
+
+public class MemberDTO{
 	
 	private long num;
 	private String id;
 	private String pw;
 	private String name;
 	private String email;
+	// memberDTO는 memberFileDTO를 가지고 있다
+	// 자식 has a 부모
+	private MemberFileDTO memberFileDTO;
 	
+	public MemberFileDTO getMemberFileDTO() {
+		return memberFileDTO;
+	}
+	public void setMemberFileDTO(MemberFileDTO memberFileDTO) {
+		this.memberFileDTO = memberFileDTO;
+	}
 	public long getNum() {
 		return num;
 	}

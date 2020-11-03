@@ -16,7 +16,7 @@ public class QnaServiceTest extends MyTestCase{
 	@Autowired
 	private QnaService qnaService;
 
-	@Test
+	//@Test
 	public void qnaListTest()throws Exception{
 		Pager pager = new Pager();
 		

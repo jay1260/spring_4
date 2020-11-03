@@ -7,16 +7,18 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.it.gb4.member.MemberDTO;
+import com.it.gb4.member.memberFile.MemberFileDTO;
 
 @Controller
 @RequestMapping("/member/**")
 public class MemberUserController {
 	
 	@Autowired
-	public MemberUserService memberUserService;
+	private MemberUserService memberUserService;
 	
 	// idCheck
 	@GetMapping("memberIdCheck")
@@ -36,9 +38,15 @@ public class MemberUserController {
 	}
 	
 	@PostMapping("memberJoin")
-	public ModelAndView setMemberJoin(MemberDTO memberDTO)throws Exception{
+	public ModelAndView setMemberJoin(MemberDTO memberDTO, MultipartFile photo, HttpSession session)throws Exception{
 		ModelAndView mv = new ModelAndView();
-		int result = memberUserService.setMemberJoin(memberDTO);
+		
+		System.out.println(photo.getOriginalFilename());
+		System.out.println(photo.getName());
+		System.out.println(photo.getSize());
+		
+		
+		int result = memberUserService.setMemberJoin(memberDTO, photo, session);
 		
 		mv.setViewName("redirect:../");
 		return mv;
@@ -101,6 +109,12 @@ public class MemberUserController {
 	@GetMapping("memberPage")
 	public ModelAndView getMemberPage()throws Exception{
 		ModelAndView mv = new ModelAndView();
+
+//		// getOne을 memberFileDTO에 리턴해서 file변수에 담아서 보내는 방식
+//		// memberFile이랑 memberUser 쿼리문에서 각각 정보를 가져올 때,
+//		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+//		MemberFileDTO memberFileDTO = memberUserService.getOne(memberDTO);
+//		mv.addObject("file", memberFileDTO);
 		mv.setViewName("member/memberPage");
 		return mv;
 	}
