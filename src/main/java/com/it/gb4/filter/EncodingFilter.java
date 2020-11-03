@@ -38,7 +38,7 @@ public class EncodingFilter implements Filter {
 
 		// pass the request along the filter chain
 		System.out.println("Encoding Filter In");
-		System.out.println("Encode : " + encode);
+		
 		request.setCharacterEncoding(encode);
 		response.setCharacterEncoding(encode);
 		chain.doFilter(request, response);
