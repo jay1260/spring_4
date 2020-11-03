@@ -7,13 +7,15 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
+
 @Component
 public class QnaInterceptor extends HandlerInterceptorAdapter {
 
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
-		System.out.println("Controller 진입 전");
+		System.out.println("Controller 진입  전");
+		
 		return super.preHandle(request, response, handler);
 	}
 	
