@@ -154,9 +154,12 @@ public class MemberUserController {
 		if(remember != null) {
 			Cookie cookie = new Cookie("remember", memberDTO.getId());
 			response.addCookie(cookie);
-			
-			cookie.setMaxAge(60);
+		}else {
+			Cookie cookie = new Cookie("remember", "");
+			cookie.setMaxAge(0);
+			response.addCookie(cookie);
 		}
+		
 		
 		memberDTO = memberUserService.getMemberLogin(memberDTO);
 		

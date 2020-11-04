@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.ModelAndView;
 
 // 예외를 전문적으롤 처리할 Annotation
-@ControllerAdvice
+//@ControllerAdvice
 public class ExceptionController {
 
 	@ExceptionHandler(NullPointerException.class)
