@@ -56,9 +56,5 @@
  	 </error-page>
  	 
  	 <!-- Back -->
- 	 <error-page>
- 	 	<error-code>500</error-code>
- 	 	<location>/WEB-INF/views/error/error_Back.jsp</location>
- 	 </error-page>
 
 </web-app>

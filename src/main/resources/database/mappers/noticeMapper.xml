@@ -92,6 +92,6 @@
 		select N.*, NF.*
 		from notice N left join noticefile NF
 		on N.num = NF.num
-		where N.num = #{num}
+		where N.num = 'a'
 	</select>
 </mapper>
