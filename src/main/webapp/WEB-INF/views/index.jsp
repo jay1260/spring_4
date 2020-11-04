@@ -23,6 +23,8 @@
 			
 			<img alt="main Image" src="./resources/images/index/main_1.jpg">
 		</div>
+		
+		<a href="./cookie/makeCookie">MakeCookie</a>
 	</div>
 </body>
 </html>
