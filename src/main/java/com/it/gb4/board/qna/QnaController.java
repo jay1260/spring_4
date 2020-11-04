@@ -189,9 +189,7 @@ public class QnaController {
 	public ModelAndView getList(Pager pager) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		List<BoardDTO> ar = qnaService.getList(pager);
-		// NullPointer **************************************
-		ar = null;
-		// **************************************************
+		
 		BoardDTO boardDTO = ar.get(0);
 		QnaDTO qnaDTO = (QnaDTO)boardDTO;
 		System.out.println(qnaDTO.getDepth());
