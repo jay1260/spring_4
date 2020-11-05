@@ -6,7 +6,7 @@
 <mapper namespace="com.it.gb4.board.notice.NoticeDAO">
 	
 	<insert id="setInsertFile" parameterType="BoardFileDTO">
-		insert into noticeFile values(notice_seq.nextval, #{num}, #{fileName}, #{oriName})
+		insert into noticeFile values(notice_seq.nextval, #{num3}, #{fileName}, #{oriName})
 	</insert>
 
 	<!-- 데이터 수정 -->
