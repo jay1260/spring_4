@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>   
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,7 +28,7 @@
 		</tr>
 	</table>
 	<div>
-		<img alt="" src="../resources/upload/member/${member.memberFileDTO.fileName}">
+		<img alt="" src="../#{fileSave['member']}/${member.memberFileDTO.fileName}">
 	</div>
 	
 	<a href="./memberUpdate" class="btn btn-primary">Update</a>
