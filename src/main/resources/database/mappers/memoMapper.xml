@@ -26,7 +26,7 @@
 			</otherwise>
 		</choose> 
 		like '%'||#{search}||'%' order by num desc) M)
-		where R between #{startRow} and #{lastRow} 
+		where R between #{startRow} and #{lastRow}
 	</select>
 	
 	<select id="getCount" resultType="Long" parameterType="Pager">

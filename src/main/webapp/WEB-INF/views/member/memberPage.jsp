@@ -28,7 +28,7 @@
 		</tr>
 	</table>
 	<div>
-		<img alt="" src="../#{fileSave['member']}/${member.memberFileDTO.fileName}">
+		<img alt="" src="../${fileSave['member']}/${member.memberFileDTO.fileName}">
 	</div>
 	
 	<a href="./memberUpdate" class="btn btn-primary">Update</a>

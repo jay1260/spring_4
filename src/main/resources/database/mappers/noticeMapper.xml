@@ -91,7 +91,7 @@
 	<select id="getOne" parameterType="NoticeDTO" resultMap="getOneResult">
 		select N.*, NF.*
 		from notice N left join noticefile NF
-		on N.num = NF.num
+		on (N.num = NF.num)
 		where N.num = #{num}
 	</select>
 </mapper>
